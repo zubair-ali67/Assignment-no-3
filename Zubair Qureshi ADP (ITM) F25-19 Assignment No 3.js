@@ -1,0 +1,449 @@
+
+// 1. Write a program that displays the number 1 through 10 using a while loop.
+
+let counter = 1;
+while (counter <= 10) {
+    console.log(counter);
+    counter++;
+}
+console.log("End");
+
+// 2. Write a program that prints all even numbers from 1 to 10 using a while loop and an if statement inside the loop to check if the number is even or not.
+
+let numCheck = 1;
+while (numCheck <= 10) {
+    if (numCheck % 2 === 0) {
+        console.log(numCheck);
+    }
+    numCheck++;
+}
+console.log("End");
+// 3. Write a program that prints all even numbers from 1 to 100 using while loop without using any if statement.
+
+let evenNum = 2;
+while (evenNum <= 100) {
+    console.log(evenNum);
+    evenNum += 2;
+}
+console.log("End");
+//4. Write a program that reads numbers from the user until a negative number is entered, and prints the sum of the positive numbers.
+
+let inputValue = parseFloat(prompt("Enter a number (negative to stop):"));
+let positiveSum = 0;
+while (inputValue >= 0) {
+    positiveSum += inputValue;
+    inputValue = parseFloat(prompt("Enter a number (negative to stop):"));
+}
+console.log("Sum of positive numbers:", positiveSum);
+
+// 5. Write a program that calculates and displays the sum of even numbers from 1 to 100 using a repeating loop.
+
+let iNum = 1;
+let evenSum = 0;
+while (iNum <= 100) {
+    if (iNum % 2 === 0) {
+        evenSum += iNum;
+    }
+    iNum++;
+}
+console.log("Sum of even numbers 1–100:", evenSum);
+
+//6. Write a program that reads numbers from the user until zero is entered, and displays the average of the numbers entered.
+
+
+let totalSum = 0;
+let totalCount = 0;
+let userInput = Number(prompt("Enter a number (0 to stop):"));
+while (userInput !== 0) {
+    totalSum += userInput;
+    totalCount++;
+    userInput = Number(prompt("Enter a number (0 to stop):"));
+}
+if (totalCount > 0) {
+    console.log("Average:", totalSum / totalCount);
+} else {
+    console.log("No numbers entered.");
+}
+
+//7. Write a program that prompts the user for a list of numbers, until the user types the number zero, and displays the largest and smallest numbers in the list.
+
+
+let firstNumber = parseInt(prompt("Enter a number (0 to stop):"));
+let minNumber = firstNumber;
+let maxNumber = firstNumber;
+while (firstNumber !== 0) {
+    if (firstNumber < minNumber) minNumber = firstNumber;
+    if (firstNumber > maxNumber) maxNumber = firstNumber;
+    firstNumber = parseInt(prompt("Enter a number (0 to stop):"));
+}
+console.log("Smallest:", minNumber);
+console.log("Largest:", maxNumber);
+
+//8. A class of ten students took a quiz. The marks (0 to 100) for this quiz are available to you. Determine the class average on the quiz.
+
+
+let studentCount = 1;
+let studentTotal = 0;
+while (studentCount <= 10) {
+    let marks = Number(prompt("Enter student marks (0–100):"));
+    studentTotal += marks;
+    studentCount++;
+}
+console.log("Class average:", studentTotal / 10);
+ 
+
+//9. Develop a class averaging program that will process an arbitrary number of marks each time the program is run.(Sentinel Value)
+
+let mark = parseInt(prompt("Enter student marks (0 to stop):"));
+let markSum = 0;
+let markCount = 0;
+while (mark !== 0) {
+    markSum += mark;
+    markCount++;
+    mark = parseInt(prompt("Enter student marks (0 to stop):"));
+}
+if (markCount > 0) {
+    console.log("Average marks:", markSum / markCount);
+} else {
+    console.log("No marks entered.");
+}
+
+//10. You have been asked to write a program to summarize the results of 10 students. Next to each student name a 1 is written if the student passed the exam and a 2 if the student failed. Your program should analyze the results of the exam as follows:
+
+	// a. Input each test result (i.e., a 1 or a 2). Display the prompting message “Enter result” each time the program requests another test result.
+	// b. Count the number of test results of each type.
+	// c. Display a summary of the test results indicating the number of students who passed and the number who failed.
+	// d. If more than eight students passed the exam, print the message “Bonus to instructor!”
+
+
+let passCount = 0;
+let failCount = 0;
+let studentIndex = 1;
+while (studentIndex <= 10) {
+    let result = parseInt(prompt("Enter result (1=pass, 2=fail):"));
+    if (result === 1) passCount++;
+    else if (result === 2) failCount++;
+    else {
+        console.log("Invalid input, enter 1 or 2.");
+        continue; // retry same student
+    }
+    studentIndex++;
+}
+console.log("Passed:", passCount);
+console.log("Failed:", failCount);
+if (passCount > 8) console.log("Bonus to instructor!");
+
+
+//11. Drivers are concerned with the mileage obtained by their automobiles. One driver has kept track of several tankfuls of gasoline by recording miles driven and gallons used for each tankful. Develop a program that will input the miles driven and gallons used for each tankful. The program should calculate and display the miles per gallon obtained for each tankful. After processing all input information, the program should calculate and print the combined miles per gallon obtained for all tankfuls. Here is a sample input/output dialog:
+
+	// Enter the gallons used (-1 to end): 12.8
+	// Enter the miles driven: 287
+	// The miles / gallon for this tank was 22.421875
+	
+	// Enter the gallons used (-1 to end): 10.3
+	// Enter the miles driven: 200
+	// The miles / gallon for this tank was 19.417475
+	
+	// Enter the gallons used (-1 to end): 5
+	// Enter the miles driven: 120
+	// The miles / gallon for this tank was 24.000000
+	
+	// Enter the gallons used (-1 to end): -1
+	// The overall average miles/gallon was 21.601423
+
+let totalMilesDriven = 0;
+let totalGallonsUsed = 0;
+while (true) {
+    let gallonsUsed = parseFloat(prompt("Enter gallons used (-1 to end):"));
+    if (gallonsUsed === -1) break;
+    let milesDriven = parseFloat(prompt("Enter miles driven:"));
+    let mpg = milesDriven / gallonsUsed;
+    console.log("Miles per gallon for this tank:", mpg);
+    totalMilesDriven += milesDriven;
+    totalGallonsUsed += gallonsUsed;
+}
+if (totalGallonsUsed > 0) {
+    console.log("Overall average MPG:", totalMilesDriven / totalGallonsUsed);
+} else {
+    console.log("No data entered.");
+}
+//12. One large chemical company pays its salespeople on a commission basis. The salespeople receive $200 per week plus 9% of their gross sales for that week. For example, a salesperson who sells $5000 worth of chemicals in a week receives $200 plus 9% of
+// $5000, or a total of $650. Develop a program that will input each salesperson’s gross sales for last week and will calculate and display that salesperson's earnings. Process one salesperson's figures at a time. Here is a sample input/output dialog:
+
+// 	Enter sales in dollars (-1 to end): 5000.00
+// 	Salary is: $650.00
+	
+// 	Enter sales in dollars (-1 to end): 1234.56
+// 	Salary is: $311.11
+	
+// 	Enter sales in dollars (-1 to end): 1088.89
+// 	Salary is: $298.00
+	
+// 	Enter sales in dollars (-1 to end): -1
+
+let basicsalary = 200;
+let commission_rate = 9;
+
+while (true) {
+    let grosssale = parseInt(prompt("Enter sale in doller (-1 to end)"));
+
+    if (grosssale === -1) {
+        break;
+    }
+
+    let Salaryies = basicsalary + (commission_rate / 100 * grosssale);
+    console.log("salary is", Salaryies);
+}
+
+//13. The simple interest on a loan is calculated by the formula
+// 	interest = principal * rate * days / 365;
+// The preceding formula assumes that rate is the annual interest rate, and therefore includes the division by 365 (days). Develop a program that will input principal, rate and days for several loans, and will calculate and display the simple interest for each loan, using the preceding formula.
+// Here is a sample input/output dialog:
+
+// 	Enter loan principal (-1 to end): 1000.00
+// 	Enter interest rate: .1
+// 	Enter term of the loan in days: 365
+// 	The interest charge is $100.00
+	
+// 	Enter loan principal (-1 to end): 1000.00
+// 	Enter interest rate: .08375
+// 	Enter term of the loan in days: 224
+// 	The interest charge is $51.40
+	
+// 	Enter loan principal (-1 to end): 10000.00
+// 	Enter interest rate: .09
+// 	Enter term of the loan in days: 1460
+// 	The interest charge is $3600.00
+	
+// 	Enter loan principal (-1 to end): -1
+
+while (true) {
+    let principal = parseFloat(prompt("Enter principal (-1 to end):"));
+
+    if (principal === -1) {
+        break;
+    }
+
+    let rate = parseFloat(prompt("Enter rate:"));
+    let days = parseInt(prompt("Enter days:"));
+
+    let interest = principal * rate * days / 365;
+    console.log("The interest charge is $" + interest);
+}
+
+// 14. Develop a program that will determine the gross pay for each of several employees. The company pays “straight time” for the first 40 hours worked by each employee and pays “time-and-a-half” for all hours worked in excess of 40 hours. You’re given a list of the employees of the company, the number of hours each employee worked last week and the hourly rate of each employee. Your program should input this information for each employee, and should determine and display the employee's gross pay. 
+// Here is a sample input/output dialog:
+
+// 	Enter # of hours worked (-1 to end): 39
+// 	Enter hourly rate of the worker ($00.00): 10.00
+// 	Salary is $390.00
+	
+// 	Enter # of hours worked (-1 to end): 40
+// 	Enter hourly rate of the worker ($00.00): 10.00
+// 	Salary is $400.00
+	
+// 	Enter # of hours worked (-1 to end): 41
+// 	Enter hourly rate of the worker ($00.00): 10.00
+// 	Salary is $415.00
+
+// 	Enter # of hours worked (-1 to end): -1
+
+
+while (true) {
+    let hoursWorked = parseFloat(prompt("Enter # of hours worked (-1 to end):"));
+
+    if (hoursWorked === -1) {
+        break;
+    }
+
+    let hourlyRate = parseFloat(prompt("Enter hourly rate of the worker ($00.00):"));
+    let grossPay;
+
+    if (hoursWorked <= 40) {
+        grossPay = hoursWorked * hourlyRate;
+    } else {
+        let extraHours = hoursWorked - 40;
+        grossPay = (40 * hourlyRate) + (extraHours * hourlyRate * 1.5);
+    }
+    console.log("Salary is $" + grossPay);
+}
+
+
+
+// 15. Write a program that utilizes looping to print the numbers from 1 to 10 side by side on the same line with three spaces between numbers.
+
+let i = 1;
+let output = "";
+
+while (i <=10) {
+    output = output+i+"  ";
+    i++;
+}
+console.log(output);
+
+// 16. Write a program that uses looping to print the following table of values.
+
+// 	N 	10*N 	100*N 	1000*N
+// 	1 	10 		100 	1000
+// 	2 	20 		200 	2000
+// 	3 	30 		300 	3000
+// 	4 	40 		400 	4000
+// 	5 	50 		500 	5000
+// 	6 	60 		600 	6000
+// 	7 	70 		700 	7000
+// 	8 	80 		800 	8000
+// 	9 	90 		900 	9000
+// 	10 	100 	1000 	10000
+
+
+let N = 1;
+
+while (N<=10) {
+    console.log(N+"  "+(N*10)+"  "+(N*100)+"  "+(N*1000))
+    N++;
+}
+
+
+
+// 17. Write a program that utilizes looping to produce the following table of values:
+
+// 	A 	A+2 A+4 A+6
+// 	3 	5 	7 	9
+// 	6 	8 	10 	12
+// 	9 	11 	13 	15
+// 	12 	14 	16 	18
+// 	15 	17 	19 	21
+
+
+let A = 3;
+while (A <= 15) {
+    console.log(A+"  "+(A+2)+"  "+(A+4)+"  "+(A+6));
+    A=A+3;
+}
+
+
+// 18. Write a program that reads in the side of a square and then prints that square out of asterisks. Your program should work for squares of all side sizes between 1 and 20. For example, if your program reads a size of 4, it should print
+
+// 	****
+// 	****
+// 	****
+// 	****
+
+
+let Size = parseInt(prompt("Enter side of square (1-20)"));
+let row = 1;
+
+while (row <=Size) {
+    let conlumn = 1;
+    let line = "";
+    
+    while (conlumn<=Size) {
+        line = line+"*";
+        conlumn++;
+    }
+    console.log(line);
+    row++;
+}
+
+// 19. Write a program that reads in the side of a square and then prints a hollow square. For example, if your program reads a size of 5, it should print
+
+// 	*****
+// 	*   *
+// 	*   *
+// 	*   *
+// 	*****
+
+let size = parseInt(prompt("Enter side of hollow square (1-20):"));
+let rows = 1;
+
+while (rows <= size) {
+    let column = 1;
+    let line = "";
+
+    while (column <= size) {
+        if (rows == 1 || rows == size || column == 1 || column == size) {
+            line += "*";
+        } else {
+            line += " ";
+        }
+        column++;
+    }
+
+    console.log(line);
+    rows++;
+}
+
+
+// 20. A palindrome is a number or a text phrase that reads the same backward as forward. For example, each of the following five-digit integers is a palindrome: 12321, 55555, 45554 and 11611. Write a program that reads in a five-digit integer and determines whether or not it’s a palindrome. [Hint: Use the division and remainder operators to separate the number
+
+
+let number = parseInt(prompt("Enter a 5-digit number:"));
+let original = number;
+let reverse = 0;
+
+while (number > 0) {
+    let lastDigit = number % 10;
+    reverse = reverse * 10 + lastDigit;
+    number = parseInt(number / 10); // 
+}
+
+if (original === reverse) {
+    console.log(original + " is a palindrome.");
+} else {
+    console.log(original + " is not a palindrome.");
+}
+
+//21. Write a program that reads an integer and determines and prints how many digits in the integer are 7s.
+
+let userNumber = parseInt(prompt("Enter an integer:"));
+let tempNumber = userNumber;
+let sevenCount = 0;
+
+while (tempNumber > 0) {
+    let digit = tempNumber % 10;       
+    if (digit === 7) {
+        sevenCount++;
+    }
+    tempNumber = parseInt(tempNumber / 10);  
+}
+
+console.log("Number of 7s in " + userNumber + " is: " + sevenCount);
+
+
+
+
+
+///////////////////////////////////////
+
+for (let i = 1; i <=50; i++) {
+    if (i%2===0) {
+        console.log(i)
+    }
+    
+}
+for (let z = 1; z < 100; z++) {
+    if (z%2==0) {
+        console.log(z)
+    }
+    
+}
+
+let num = parseInt(prompt("Enter a number:"));
+
+for (let i = 1; i <= 10; i++) {
+    console.log(num + " x " + i + " = " + (num * i));
+}
+
+let numbers = parseInt(prompt("Enter a number"));
+
+for (let x = 1; x <=10; x++) {
+    console.log(numbers + "x" + i + "=" + (num*1));
+    
+}
+
+
+for (let i = 1; i <= 10; i++) {
+    for(let j=1; j<=10; j++){
+       console.log(`${i} * ${j} = ${i * j}`); 
+    }
+}
